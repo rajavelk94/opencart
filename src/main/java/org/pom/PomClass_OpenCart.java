@@ -198,10 +198,10 @@ public class PomClass_OpenCart {
 	
 	
 	@FindBy(xpath = "//*[@id=\"content\"]/div[2]/div[1]/ul/li[1]/a")
-	private WebElement clickeee ;
+	private WebElement clicks ;
 	
 	@FindBy(xpath = "//*[@id=\"content\"]/div/div/a")
-	private WebElement continueeee  ;
+	private WebElement continues1  ;
 	
 	
 	
@@ -218,12 +218,12 @@ public class PomClass_OpenCart {
 	
 	
 	public WebElement getClickeee() {
-		return clickeee;
+		return clicks;
 	}
 
 
 	public WebElement getContinueeee() {
-		return continueeee;
+		return continues1;
 	}
 
 

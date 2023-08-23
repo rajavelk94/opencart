@@ -1,7 +1,6 @@
-@tag1
 Feature: To validate the opencart functionalities
+@tag1
 Scenario: To validate the Features functionalities
-
 Given  To enter the URL
 And To maximize the window
 When  user click an features

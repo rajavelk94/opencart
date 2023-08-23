@@ -10,8 +10,8 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src\\test\\java\\featurfile\\OpenCart.feature",glue = "org.stepdefination")
-         //  'dryRun=true,monochrome=false)
+@CucumberOptions(features = "src\\test\\java\\featurfile",glue = "org.stepdefination")
+//@CucumberOptions(features = "src\\test\\java\\featurfile",glue = "org.stepdefination",dryRun=true,monochrome=false,tags="@Tag2")
 
 public class Runner_OpenCart {
 
@@ -19,10 +19,9 @@ public class Runner_OpenCart {
 
 	@BeforeClass
 	public static void start() {
-	ChromeOptions c=new ChromeOptions();
-	c.addArguments("--remote-allow-origns=*");
+	ChromeOptions chrome=new ChromeOptions();
+	chrome.addArguments("--remote-allow-origns=*");
 	driver=new ChromeDriver();
 	
-
-}
+	}
 }

@@ -2,8 +2,10 @@ package org.base;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,67 +13,78 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver.TargetLocator;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClass_OpenCart {
 	public static WebDriver driver;
 
-	public static void url(WebDriver driver, String s) {
-		driver.get(s);
+	public static void get_url(WebDriver driver, String value) {
+		driver.get(value);
 	}
-	public static void max(WebDriver driver) {
+	public static void window_maximum(WebDriver driver) {
 		driver.manage().window().maximize();
 
 	}
-	public static void Click(WebElement w) {
-		w.click();
+	public static void elementClick(WebElement element) {
+		element.click();
 	}
 	
-	public static void pass(WebElement d, String e) {
+	public static void input_value(WebElement element, String value) {
 
-		d.sendKeys(e);
+		element.sendKeys(value);
 	}
 	
-	public static void clear(WebElement e) {
-		e.clear();
+	public static void element_clear(WebElement element) {
+		element.clear();
 	}
 	
-	public static void movetoelement(WebElement a, WebDriver d) {
-		Actions ac = new Actions(d);
-		ac.moveToElement(a).build().perform();
+	public static void move_to_element(WebElement element, WebDriver driver) {
+		Actions action = new Actions(driver);
+		action.moveToElement(element).build().perform();
 	}
 	
-	public static void navigate(WebDriver d) {
-		d.navigate();
+	public static void element_navigate(WebDriver driver) {
+		driver.navigate();
 	}
 
-	public static void switchto(WebDriver driver) {
-		TargetLocator switchTo = driver.switchTo();
-		System.out.println(switchTo);
+	public static void element_switch_to(WebDriver driver) {
+		TargetLocator switchToelement = driver.switchTo();
+		System.out.println(switchToelement);
 	}
 	
-	public static void DropDown(WebElement e, String s) {
-		Select ob = new Select(e);
-		ob.selectByValue(s);
+	public static void Drop_Down(WebElement element, String value) {
+		Select ob = new Select(element);
+		ob.selectByValue(value);
 	}
-	public static void scrolldown(WebDriver driver,WebElement webele) {
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("arguments[0].scrollIntoView()",webele);
+	public static void scroll_down(WebDriver driver,WebElement element) {
+		JavascriptExecutor java_executor=(JavascriptExecutor)driver;
+		java_executor.executeScript("arguments[0].scrollIntoView()",element);
 		
 	
 	}
 		
-	public static void scrollUp(WebDriver driver,WebElement webele) {
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		js.executeScript("arguments[0].scrollIntoView(false)",webele);
+	public static void scroll_Up(WebDriver driver,WebElement element) {
+		JavascriptExecutor java_executor=(JavascriptExecutor)driver;
+		java_executor.executeScript("arguments[0].scrollIntoView(false)",element);
 	}
 	
-	public static void screenshot(WebDriver driver, String picname) throws IOException {
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File sr = ts.getScreenshotAs(OutputType.FILE);
-		File destination =new File("C:\\Users\\rajav\\eclipse-workspace\\rajavel\\Java_Selinium\\OpenCart_Demo\\screenshot"+picname+".png");
-		FileUtils.copyFile(sr,destination);
+	public static void screen_shot(WebDriver driver, String picname) throws IOException {
+		TakesScreenshot snapshot = (TakesScreenshot) driver;
+		File source = snapshot.getScreenshotAs(OutputType.FILE);
+		File destination =new File("C:\\Users\\rajav\\git\\opencart_webApplication\\snapshot"+picname+".png");
+		FileUtils.copyFile(source,destination);
 	}
 	
+	public static void tohold(WebDriver driver, int value) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(value));
+	}
+	
+	
+	 public void explictwait() {
+	        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10)); // Wait up to 10 seconds
+	        WebElement welcomeMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("welcomeMessage")));
+	    }
 	
 }
